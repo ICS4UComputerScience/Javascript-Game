@@ -1,0 +1,247 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Co-Op</title>
+</head>
+
+<style>
+
+	body {
+
+		text-align: center;
+		background-color: yellow;
+
+	}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+</style>
+
+<body>
+
+	<ul>
+ 		<li><a href="file:///Users/jack.douglas/Desktop/Javascript/StartPage.html">Home</a></li>
+  		<li><a href="file:///Users/jack.douglas/Desktop/Javascript/Instructions.html">Instructions</a></li>
+  		<li><a href="file:///Users/jack.douglas/Desktop/Javascript/ClassGame.html">Solo</a></li>
+  		<li><a class="active" href="file:///Users/jack.douglas/Desktop/Javascript/Co-Op.html">Co-Op</a></li>
+  		<li><a href="file:///Users/jack.douglas/Desktop/Javascript/About.html">About</a></li>
+	</ul>
+
+
+<section>
+
+<!-- This div is the canvas -->
+<div>
+<br>	
+<canvas id="canvas" width="800" height="550">
+This text is displayed if your browser does not support HTML5 Canvas.
+</canvas>
+</br>
+</div>
+
+<script type="text/javascript">
+/*
+   index.html - draws a dot on the screen, credit to:
+   http://html5.litten.com/moving-shapes-on-the-html5-canvas-with-the-keyboard/
+   programmer: MHoel, Nov 3, 2014
+*/
+
+
+// Set some global variables
+var canvas;
+var ctx;
+var dx = 30;
+var dy = 30;
+var x = 400;
+var y = 450;
+var wallX = 0; 
+var wallY = 0;
+var wallWidth = Math.floor((Math.random() * 265) + 0);
+var wallHeight = 20;
+var WIDTH = 800;
+var HEIGHT = 550;
+var change = 0;
+var colour;
+var score = 0;
+var scoreSet = true;
+
+//function circle(x,y,r) {
+//	ctx.beginPath();
+//	ctx.arc(x, y, r, 0, Math.PI*2, true);
+//	ctx.fill();
+//}
+
+if (change == 0) {
+	colour = "red";
+} else if (change == 1) {
+	colour = "orange";
+} else if (change == 2) {
+	colour = "yellow";	
+} else if (change == 3) {
+	colour = "green";	
+} else if (change == 4) {
+	colour = "blue";
+} else if (change == 5) {
+	colour = "pink";
+} else if (change == 6) {
+	colour = "purple";
+}
+
+function score(){
+	if (y <= wallY && x >= wallWidth && x <= 800 - wallWidth - 60) {
+		score += 1;
+		scoreSet = false;
+		console.log(0);
+	} else if (y > wallY && y < wallY + wallHeight) {
+		if (x < wallWidth || x > 800 - wallWidth - 60) {
+			score = 0;
+			scoreSet = false;
+			console.log("score");
+		}
+	}
+}
+
+function wall(wallX,wallY,wallWidth,wallHeight) {
+	change += 1;
+	ctx.fillStyle = colour;
+	ctx.beginPath();
+	ctx.rect(wallX,wallY,wallWidth,wallHeight);
+	ctx.closePath();
+	ctx.fill();
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.rect(wallX+wallWidth+60,wallY,800-(wallX+wallWidth+60),wallHeight);
+	ctx.closePath();
+	ctx.fill();
+	ctx.stroke();
+}
+
+function player(x,y,w,h) {
+	ctx.beginPath();
+	ctx.rect(x,y,w,h);
+	ctx.closePath();
+	ctx.fill();
+	ctx.stroke();
+}
+
+function rect(x,y,w,h) {
+	ctx.beginPath();
+	ctx.rect(x,y,w,h);
+	ctx.closePath();
+	ctx.fill();
+	ctx.stroke();
+}
+
+function clear() {
+	ctx.clearRect(0, 0, WIDTH, HEIGHT);
+}
+
+// Important starting function
+function init() {
+	canvas = document.getElementById("canvas");
+	ctx = canvas.getContext("2d");
+	return setInterval(draw, 5); // this is key, tells draw function to fire 10x per second
+}
+
+function doKeyDown(evt){
+	switch (evt.keyCode) {
+		case 38:  /* Up arrow was pressed */
+			if (y - dy > 0){	
+				y -= dy;
+			} else {
+				y = 0;
+			}
+			break;
+		case 40:  /* Down arrow was pressed */
+			if (y + dy < HEIGHT){		
+				y += dy;	
+			} else {
+				y = HEIGHT - 15;
+			}
+			break;
+		case 37:  /* Left arrow was pressed */
+			if (x - dx > 0){
+				x -= dx;
+			} else {
+				x = 0;
+			}
+			break;
+		case 39:  /* Right arrow was pressed */
+			if (x + dx < WIDTH){
+				x += dx;
+			} else {
+				x = WIDTH - 15;
+			}
+			break;
+		}
+}
+
+function draw() {
+	clear();
+	if (change == 0) {
+		colour = "red";
+	} else if (change == 1) {
+		colour = "orange";
+	} else if (change == 2) {
+		colour = "yellow";	
+	} else if (change == 3) {
+		colour = "green";	
+	} else if (change == 4) {
+		colour = "blue";
+	} else if (change == 5) {
+		colour = "pink";
+	} else if (change == 6) {
+		colour = "purple";
+	} else if (change == 7) {
+		change = 0;
+	}
+	ctx.fillStyle = "white";
+	ctx.strokeStyle = "black";
+	rect(0,0,WIDTH,HEIGHT);
+	ctx.fillStyle = "purple";
+	wallY = wallY + 0.8;
+	if (wallY > HEIGHT) {
+		wallY = 0;
+		scoreSet = true;
+		wallWidth = Math.floor((Math.random() * 265) + 0);
+	}
+
+	player(x,y,15,15);
+	wall(wallX,wallY,wallWidth,wallHeight);
+	//circle(x, y, 10);
+}
+
+// Main part of program
+init();
+window.addEventListener('keydown',doKeyDown,true);
+
+</script>
+</section>
+</body>
+</html>
