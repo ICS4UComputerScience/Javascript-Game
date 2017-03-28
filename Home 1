@@ -1,0 +1,73 @@
+<html>
+
+	<title> Start Screen </title>
+	
+	<style>
+
+		p1 {
+
+			font-family: monospace;
+			color: purple;
+			font-size: 60px;
+
+
+		}
+
+		body {
+
+			background-color: lightblue;
+			text-align: center;
+
+		}
+
+		ul {
+		    list-style-type: none;
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;
+		    background-color: #333;
+		}
+
+		li {
+		    float: left;
+		}
+
+		li a {
+		    display: block;
+		    color: white;
+		    text-align: center;
+		    padding: 14px 16px;
+		    text-decoration: none;
+		}
+
+		li a:hover:not(.active) {
+		    background-color: #111;
+		}
+
+		.active {
+		    background-color: #4CAF50;
+		}
+
+
+	</style>
+
+	<script>
+
+	</script>
+
+	<body>
+
+	<ul>
+ 		<li><a class="active" href="file:///Users/jack.douglas/Desktop/Javascript/StartPage.html">Home</a></li>
+  		<li><a href="file:///Users/jack.douglas/Desktop/Javascript/Instructions.html">Instructions</a></li>
+  		<li><a href="file:///Users/jack.douglas/Desktop/Javascript/ClassGame.html">Solo</a></li>
+  		<li><a href="file:///Users/jack.douglas/Desktop/Javascript/Co-Op.html">Co-Op</a></li>
+  		<li><a href="file:///Users/jack.douglas/Desktop/Javascript/About.html">About</a></li>
+	</ul>
+		<br>
+		<p1 id = "title"> Rise to the Skies </p1>
+		</br>
+
+	</body>	
+
+</html>
