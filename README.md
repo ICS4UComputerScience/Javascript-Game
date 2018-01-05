@@ -1,8 +1,8 @@
 # Barrier Game
 
-This is a javascript game created in the ICS4U course to demonstrate the use of javascript.
+This was a javascript game created in the ICS4U course to demonstrate the use of javascript.
 
-There is minimal HTML and CSS also being used.
+There is minimal HTML and CSS being used.
 
 ### How to play
 
