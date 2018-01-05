@@ -4,7 +4,7 @@ This was a javascript game created in the ICS4U course to demonstrate the use of
 
 There is minimal HTML and CSS being used.
 
-Try the game out [here]().
+Try the game out [here](https://ics4ucomputerscience.github.io/Javascript-Game/index.html).
 
 ### How to play
 
